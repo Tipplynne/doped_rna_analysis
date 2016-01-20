@@ -23,7 +23,7 @@ def options(menu):
 		out = filtering_module.filter(rawDF)
 		filtered_doubles = out[0]
 		single_mutants = out[1]
-	
+		
 
 ## ---- Option 3: Calculate the Product each dpM's corresponding single mutants -------------- ##
 	elif menu == "3" or menu == "P": 
@@ -48,17 +48,16 @@ def options(menu):
 		prod_dist_module.norm_distri(dbls_wprods)
 	
 
-## ---- Option 6: View the distribution of the Product Data ---------------------------------- ##
+## ---- Option 6: View the heatmap of the dataset in terms of FC ---------------------------------- ##
 
 ## ---- Option 7: Mine the positions and mutant types from mutation data ---------------------------------- ##
 	elif menu == "7":
 
-		import positional_modules
+		import positional_module
 		global filtered_doubles 
-		mined_doubles = positional_modules.find_posD(filtered_doubles)
+		mined_doubles = positional_module.find_posD(filtered_doubles)
 		mined_singles = positional_module.find_posS(single_mutants)
-		print(mined_doubles.head)
-		print(mined_singles.head)
+		
 
 ## ---- Option 8: Menu escape and return ----------------------------------------------------- ##
 	elif menu == "" or menu == "Q":

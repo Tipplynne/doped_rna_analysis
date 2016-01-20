@@ -45,7 +45,7 @@ def find_posD(dfd):
 def find_posS(dfd):
 	 
 	#this fxn focuses on the DPmutant DF, uses the string slicer to extract info; indexing for mut1 is dfd[5] and for mut2 is dfd[6], dfd[7] contains the SPmutants FC product value
-	dfd["packed1"] = ([str_slicer(row[5]) for row in dfd.itertuples(False)])
+	dfd["packed1"] = ([str_slicer(row[3]) for row in dfd.itertuples(False)])
 	unpack = ('position1', 'native1', 'mut_type1')
 
 	#unpack etc is new column names, create new dfs for each mutation
