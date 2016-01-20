@@ -55,10 +55,11 @@ def options(menu):
 
 		import positional_modules
 		global filtered_doubles 
-		
-		mined_doubles = positional_modules.find_pos(filtered_doubles)
+		mined_doubles = positional_modules.find_posD(filtered_doubles)
+		mined_singles = positional_module.find_posS(single_mutants)
 		print(mined_doubles.head)
-		
+		print(mined_singles.head)
+
 ## ---- Option 8: Menu escape and return ----------------------------------------------------- ##
 	elif menu == "" or menu == "Q":
 		last = input("\nDo you want to exit [Enter] or do you want go back to the menu? (M)")
