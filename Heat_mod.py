@@ -10,4 +10,8 @@
 
 #http://nbviewer.ipython.org/github/rasbt/matplotlib-gallery/blob/master/ipynb/heatmaps.ipynb
 
-
+def showmap(dfd, dfs):
+	import numpy as np 
+	from pandas import DataFrame
+	import matplotlib.pyplot as plt
+	
