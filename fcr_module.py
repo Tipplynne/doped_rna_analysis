@@ -26,10 +26,10 @@ def calc_fcr(dfd, dfs):
 
 	def fcr1(row):
 		mut1 = row[5]
-		 																	#define variables that select mutations from filtered df 
+		#define variables that select mutations from filtered df 
 		     	
 		fc1 = dfs[dfs["mut"] == mut1]["fc"].iat[0] 	#iat provides integer based lookups, pulls fc from corresponding mutant
-		 																					   #at [0] because is the first location in "fc"
+		 																					   
 		fcd = dfd["fc"].iat[0]
 		if fcd > fc1:
 			return fcd - fc1

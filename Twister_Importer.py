@@ -23,8 +23,8 @@ def options(menu):
 		out = filtering_module.filter(rawDF)
 		filtered_doubles = out[0]
 		single_mutants = out[1]
-		print(filtered_doubles)
-		print(single_mutants)
+		#print(filtered_doubles)
+		#print(single_mutants)
 		
 
 ## ---- Option 3: Calculate the Product each dpM's corresponding single mutants -------------- ##
@@ -50,13 +50,8 @@ def options(menu):
 		prod_dist_module.norm_distri(dbls_wprods)
 	
 
-## ---- Option 6: View the heatmap of the dataset in terms of FC ---------------------------------- ##
 
-	elif menu == "6":
-		import Heat_mod
-		Heat_mod.showmap(mined_doubles, mined_singles)
-
-## ---- Option 7: Mine the positions and mutant types from mutation data ---------------------------------- ##
+## ---- Option 7: Mine the positions and mutant types from mutation data --------------------- ##
 	elif menu == "7":
 
 		import positional_module
@@ -67,6 +62,16 @@ def options(menu):
 		df_new = fcr_module.remove_dups(mined_doubles)
 		a_df = fcr_module.calc_fcr(df_new, mined_singles)
 		#print(a_df)
+
+
+## ---- Option 6: View the heatmap of the dataset in terms of FC ----------------------------- ##
+
+	elif menu == "6":
+		import Heat_mod
+		global mined_doubles 
+		global mined_singles
+		Heat_mod.mkfile(mined_doubles, mined_singles)
+		#Heat_mod.showmap(mined_doubles, mined_singles)
 
 ## ---- Option 8: Menu escape and return ----------------------------------------------------- ##
 	elif menu == "" or menu == "Q":
