@@ -23,20 +23,38 @@ def mkfile(dfd, dfs):
 	#first open file
 	writer = pd.ExcelWriter('grouped_data_4heat.xlsx')
 
-	#using pivot_table method to create matrix
+	#using pivot_table method to create the half matrix
 	
-	pivotplay = pd.pivot_table(dfd, values="fc", index=['position1','mut_type1'], columns=['position2','mut_type2']) 
+	#print(dfd)
+	pivotplay1 = pd.pivot_table(dfd, values="fc", index=['position1','mut_type1'], columns=['position2','mut_type2']) 
+	
+	#create the transposed matrix
+	pivotplay2 = pd.pivot_table(dfd, values="fc", index=['position2','mut_type2'], columns=['position1','mut_type1'])
+
+	#sneakily rename the levels in transposed matrix
+	pivotplay2.index.names = pivotplay1.index.names
+	pivotplay2.columns.names = pivotplay1.columns.names
+	pivotplay1.to_excel(writer,'pivotplay1')
+	pivotplay2.to_excel(writer,'pivotplay2')
+
+	#merge the two matrices
+	combined_pivot = pivotplay1.combine_first(pivotplay2)
+	combined_pivot.to_excel(writer,'combined_pivot')
+	
+
+	#fix the weird indexing issue created from the cleaning step in positional module
+	
+	#So, these 2 are not working
+	#index_check1 = pivotplay.sortlevel(["position1"], sort_remaining=False)		
+	#index_check1.to_excel(writer,'index_check1')
+
+	#pivotplay = pivotplay.sort(['position2'],ascending=[1])
 
 	#need to fill the ID portion of the matrix, using the set_value fxn: 
 	#df.set_value('Col', 'Index', value) or using some nifty solns found here: http://manishamde.github.io/blog/2013/03/07/pandas-and-python-top-10/
-	print(dfs)
-	def fillID(x):
-		if type(x) is None:
-			return 
+	#print(dfs)
+	
 		
-	print(pivotplay)
-			
-	pivotplay.to_excel(writer,'TheMatrix')
 
 #heatmapping fxn
 def showmap(df):
