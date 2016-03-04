@@ -24,11 +24,9 @@ def mkfile(dfd, dfs):
 	writer = pd.ExcelWriter('grouped_data_4heat.xlsx')
 
 	#using pivot_table method to create the half matrix
-	
-	#print(dfd)
 	pivotplay1 = pd.pivot_table(dfd, values="fc", index=['position1','mut_type1'], columns=['position2','mut_type2']) 
 	
-	#create the transposed matrix
+	#create the transposed half matrix
 	pivotplay2 = pd.pivot_table(dfd, values="fc", index=['position2','mut_type2'], columns=['position1','mut_type1'])
 
 	#sneakily rename the levels in transposed matrix
